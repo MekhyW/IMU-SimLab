@@ -5,13 +5,16 @@ using UnityEngine;
 public class IMUFollow : MonoBehaviour
 {
     public GameObject target;
-    private float orientationX, orientationY, orientationZ;
-    private float accelerationX, accelerationY, accelerationZ;
-    private float gyroscopeX, gyroscopeY, gyroscopeZ;
+    public float orientationX, orientationY, orientationZ;
+    public float accelerationX, accelerationY, accelerationZ;
+    public float gyroscopeX, gyroscopeY, gyroscopeZ;
+    private Rigidbody rb;
 
     void Start()
     {
         transform.SetParent(target.transform);
+        rb = GetComponent<Rigidbody>();
+        if (rb == null) Debug.LogError("Rigidbody not found!");
     }
 
     void FixedUpdate()
@@ -19,11 +22,11 @@ public class IMUFollow : MonoBehaviour
         orientationX = transform.rotation.eulerAngles.x;
         orientationY = transform.rotation.eulerAngles.y;
         orientationZ = transform.rotation.eulerAngles.z;
-        accelerationX = GetComponent<Rigidbody>().velocity.x;
-        accelerationY = GetComponent<Rigidbody>().velocity.y;
-        accelerationZ = GetComponent<Rigidbody>().velocity.z;
-        gyroscopeX = GetComponent<Rigidbody>().angularVelocity.x;
-        gyroscopeY = GetComponent<Rigidbody>().angularVelocity.y;
-        gyroscopeZ = GetComponent<Rigidbody>().angularVelocity.z;
+        accelerationX = rb.velocity.x;
+        accelerationY = rb.velocity.y;
+        accelerationZ = rb.velocity.z;
+        gyroscopeX = rb.angularVelocity.x;
+        gyroscopeY = rb.angularVelocity.y;
+        gyroscopeZ = rb.angularVelocity.z;
     }
 }

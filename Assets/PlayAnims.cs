@@ -10,8 +10,8 @@ public class PlayAnims : MonoBehaviour
     private Animator animator;
     private Dictionary<string, string[]> animationSets;
     private string[] folderNames = {"Dance", "Idle", "Run", "Spin", "Walk"};
-    private string currentSet = "Dance";
-    private int currentAnimIndex = 0;
+    public string currentSet = "Dance";
+    public int currentAnimIndex = 0;
 
     void PlayCurrentAnimation()
     {
@@ -19,7 +19,7 @@ public class PlayAnims : MonoBehaviour
         if (animator.HasState(0, Animator.StringToHash(animationName)))
         {
             animator.Play(animationName, 0, 0f);
-            Debug.Log($"Playing animation: {animationName} in layer 0");
+            Debug.Log($"Playing animation: {animationName}");
         }
         else Debug.LogError($"Animation state '{animationName}' not found in controller!");
     }
@@ -36,7 +36,13 @@ public class PlayAnims : MonoBehaviour
                 case "Idle": currentSet = "Run"; break;
                 case "Run": currentSet = "Spin"; break;
                 case "Spin": currentSet = "Walk"; break;
-                case "Walk": currentSet = "Dance"; break;
+                case "Walk": 
+                    #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+                    #else
+                        Application.Quit();
+                    #endif
+                    return;
             }
         }
         PlayCurrentAnimation();

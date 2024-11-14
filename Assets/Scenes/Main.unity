@@ -509,6 +509,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5465940246521907071, guid: ad03ad68e0f585f41a0641a560825c6b, type: 3}
   m_PrefabInstance: {fileID: 20149449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1190785131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1190785133}
+  - component: {fileID: 1190785132}
+  m_Layer: 0
+  m_Name: Logger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1190785132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190785131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1710c2ddaac19418294ac9650cbb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imu: {fileID: 1383597729}
+  playAnims: {fileID: 1244397921}
+--- !u!4 &1190785133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190785131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0572724, y: 0.020402074, z: 0.6691414}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1244397914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ad03ad68e0f585f41a0641a560825c6b, type: 3}
@@ -574,6 +620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57bee87663f3f4fb409d5fda345f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSet: Dance
+  currentAnimIndex: 0
 --- !u!1 &1383597724
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,8 +633,8 @@ GameObject:
   - component: {fileID: 1383597725}
   - component: {fileID: 1383597728}
   - component: {fileID: 1383597727}
-  - component: {fileID: 1383597729}
   - component: {fileID: 1383597730}
+  - component: {fileID: 1383597729}
   m_Layer: 0
   m_Name: IMU
   m_TagString: Untagged
@@ -672,6 +720,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1713665041}
+  orientationX: 0
+  orientationY: 0
+  orientationZ: 0
+  accelerationX: 0
+  accelerationY: 0
+  accelerationZ: 0
+  gyroscopeX: 0
+  gyroscopeY: 0
+  gyroscopeZ: 0
 --- !u!54 &1383597730
 Rigidbody:
   m_ObjectHideFlags: 0
