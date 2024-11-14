@@ -63,6 +63,8 @@ public class PlayAnims : MonoBehaviour
             return;
         }
         AnimatorControllerLayer layer = animController.layers[0];
+        ChildAnimatorState[] states = layer.stateMachine.states;
+        foreach (ChildAnimatorState state in states) layer.stateMachine.RemoveState(state.state);
         foreach (string folder in folderNames)
         {
             string[] files = Directory.GetFiles("Assets/" + folder, "*.fbx");
